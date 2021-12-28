@@ -1,13 +1,19 @@
-import { IActor } from "./types/Actor"
-import{ Piece } from "./actors/Actors"
+import { Actor, IActor } from "./types/Actor"
+import { Piece } from "./actors/Actors"
+import { FPSViewer } from "./actors/FPSViewer"
+import { Timer } from "./actors/Timer"
+import {Score} from "./actors/Score"
 
 window.onload = () => {
 	const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 	const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
+	let fps = new FPSViewer
+	let timer = new Timer
+	let score = new Score
 	let piece = new Piece ({x:100, y:100})
 
-	let actors: Array<IActor> =[piece]
+	let actors: Array<IActor> =[fps,timer,score, piece]
 		
 	let lastFrame = 0;
 	const render = (time: number) => {
@@ -23,5 +29,11 @@ window.onload = () => {
 		window.requestAnimationFrame(render)
 	}
 	window.requestAnimationFrame(render)
+
+	document.body.addEventListener("keydown", e => {
+		actors.forEach(actor => {
+			actor.keyboard_event(e.key)
+		})
+	})
 
 }

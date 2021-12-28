@@ -1,3 +1,10 @@
 body {
 	background-color: rgb(184, 184, 184);
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+#canvas {
+	border: 1px solid black;
+	
 }

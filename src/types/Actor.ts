@@ -17,3 +17,5 @@ export class Actor implements IActor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {}
   keyboard_event(key: string) {}
 }
+
+export type Size = {w: number, h:number}

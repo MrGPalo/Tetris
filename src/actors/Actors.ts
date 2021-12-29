@@ -32,7 +32,7 @@ export class Piece extends Actor implements IActor {
       case `ArrowRight`:
         if (
           this.origin.y != 912 - this.pieceSize.h &&
-          this.origin.x >= 256  &&
+          this.origin.x >= 256 &&
           this.origin.x < 768 - this.pieceSize.w
         ) {
           this.origin.x += this.pieceSize.h / 2;
@@ -48,13 +48,7 @@ export class Piece extends Actor implements IActor {
         }
         break;
       case `ArrowDown`:
-        if (this.origin.y ==912-this.pieceSize.h) {
-          this.speed.x = 0;
-          this.speed.y = 0;
-        }
-        if (this.origin.y < 912 - this.pieceSize.h) {
-          this.origin.y += this.pieceSize.w;
-        }
+        this.speed.y++;
         break;
       case ` `:
         this.origin.y = 912 - this.pieceSize.h;

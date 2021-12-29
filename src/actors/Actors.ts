@@ -11,13 +11,13 @@ export class Piece extends Actor implements IActor {
   constructor(
     initialPos: Point,
     initialSpeed = 10,
-    size: Size = { w: 512/12, h: 512/12 }
+    size: Size = { w: 512 / 12, h: 512 / 12 }
   ) {
     super();
     this.pieceSize = size;
     this.pieceColor = "red";
     this.origin = { x: initialPos.x, y: initialPos.y };
-    this.maxSpeed = 512/12;
+    this.maxSpeed = 512 / 12;
     this.speed = { x: 0, y: this.maxSpeed };
   }
   update(delta: number) {
@@ -30,13 +30,21 @@ export class Piece extends Actor implements IActor {
   keyboard_event(key: string) {
     switch (key) {
       case `ArrowRight`:
-        if (this.origin.y != 912 - this.pieceSize.h) {
-          this.origin.x += this.pieceSize.h/2;
+        if (
+          this.origin.y != 912 - this.pieceSize.h &&
+          this.origin.x >= 256  &&
+          this.origin.x < 768 - this.pieceSize.w
+        ) {
+          this.origin.x += this.pieceSize.h / 2;
         }
         break;
       case `ArrowLeft`:
-        if (this.origin.y != 912 - this.pieceSize.h) {
-          this.origin.x -= this.pieceSize.w/2;
+        if (
+          this.origin.y != 912 - this.pieceSize.h &&
+          this.origin.x > 256 + this.pieceSize.w / 2 &&
+          this.origin.x < 768 - this.pieceSize.w / 2
+        ) {
+          this.origin.x -= this.pieceSize.w / 2;
         }
         break;
       case `ArrowDown`:

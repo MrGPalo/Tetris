@@ -30,12 +30,20 @@ export class Piece extends Actor implements IActor {
   keyboard_event(key: string) {
     switch (key) {
       case `ArrowRight`:
-        if (this.origin.y != 912 - this.pieceSize.h) {
+        if (
+          this.origin.y != 912 - this.pieceSize.h &&
+          this.origin.x >= 256 &&
+          this.origin.x < 768 - this.pieceSize.w
+        ) {
           this.origin.x += this.pieceSize.h / 2;
         }
         break;
       case `ArrowLeft`:
-        if (this.origin.y != 912 - this.pieceSize.h) {
+        if (
+          this.origin.y != 912 - this.pieceSize.h &&
+          this.origin.x > 256 + this.pieceSize.w / 2 &&
+          this.origin.x < 768 - this.pieceSize.w / 2
+        ) {
           this.origin.x -= this.pieceSize.w / 2;
         }
         break;

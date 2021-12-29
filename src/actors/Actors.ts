@@ -11,7 +11,7 @@ export class Piece extends Actor implements IActor {
   constructor(
     initialPos: Point,
     initialSpeed = 10,
-    size: Size = { w: 50, h: 50 }
+    size: Size = { w: 512/12, h: 512/12 }
   ) {
     super();
     this.pieceSize = size;
@@ -22,7 +22,7 @@ export class Piece extends Actor implements IActor {
   }
   update(delta: number) {
     let newPosY = this.origin.y + this.speed.y * delta;
-    if (newPosY < (1024 - this.pieceSize.h) && newPosY >= 0) {
+    if (newPosY < 1024 - this.pieceSize.h && newPosY >= 0) {
       this.origin.y = newPosY;
     }
   }
@@ -31,17 +31,17 @@ export class Piece extends Actor implements IActor {
     switch (key) {
       case `ArrowRight`:
         if (this.origin.y != 1024 - this.pieceSize.h) {
-          this.origin.x += 10;
+          this.origin.x += this.pieceSize.h;
         }
         break;
       case `ArrowLeft`:
         if (this.origin.y != 1024 - this.pieceSize.h) {
-          this.origin.x -= 10;
+          this.origin.x -= this.pieceSize.w;
         }
         break;
       case `ArrowDown`:
         if (this.origin.y != 1024 - this.pieceSize.h) {
-          this.origin.y += 10;
+          this.origin.y += this.pieceSize.w;
         }
         break;
       case ` `:

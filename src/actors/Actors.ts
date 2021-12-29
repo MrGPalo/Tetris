@@ -1,5 +1,12 @@
 import { IActor, Actor, Size } from "../types/Actor";
 import { Point } from "../types/Point";
+import {
+  canvasWidth,
+  canvasHeight,
+  playWidth,
+  playHeight,
+  pieceUnit,
+} from "../utils/CanvasMeasureVars";
 
 export class Piece extends Actor implements IActor {
   pieceSize: Size;
@@ -11,13 +18,13 @@ export class Piece extends Actor implements IActor {
   constructor(
     initialPos: Point,
     initialSpeed = 10,
-    size: Size = { w: 512 / 12, h: 512 / 12 }
+    size: Size = { w: pieceUnit, h: pieceUnit }
   ) {
     super();
     this.pieceSize = size;
     this.pieceColor = "red";
     this.origin = { x: initialPos.x, y: initialPos.y };
-    this.maxSpeed = 512 / 12;
+    this.maxSpeed = pieceUnit;
     this.speed = { x: 0, y: this.maxSpeed };
   }
   update(delta: number) {
@@ -48,7 +55,7 @@ export class Piece extends Actor implements IActor {
         }
         break;
       case `ArrowDown`:
-        this.speed.y++;
+        this.speed.y++
         break;
       case ` `:
         this.origin.y = 912 - this.pieceSize.h;

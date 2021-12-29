@@ -22,7 +22,7 @@ export class Piece extends Actor implements IActor {
   }
   update(delta: number) {
     let newPosY = this.origin.y + this.speed.y * delta;
-    if (newPosY < 1024 && newPosY >= 0) {
+    if (newPosY < (1024 - this.pieceSize.h) && newPosY >= 0) {
       this.origin.y = newPosY;
     }
   }
@@ -30,33 +30,27 @@ export class Piece extends Actor implements IActor {
   keyboard_event(key: string) {
     switch (key) {
       case `ArrowRight`:
-        console.log("Right");
-        this.origin.x += 10;
+        if (this.origin.y != 1024 - this.pieceSize.h) {
+          this.origin.x += 10;
+        }
         break;
       case `ArrowLeft`:
-        console.log("Left");
-        this.origin.x -= 10;
+        if (this.origin.y != 1024 - this.pieceSize.h) {
+          this.origin.x -= 10;
+        }
         break;
       case `ArrowDown`:
-        console.log("Down");
-        this.speed.y + 5;
+        if (this.origin.y != 1024 - this.pieceSize.h) {
+          this.origin.y += 10;
+        }
         break;
       case ` `:
-        console.log("Spacebar");
+        this.origin.y = 1024 - this.pieceSize.h;
+        this.speed.x = 0;
+        this.speed.y = 0;
         break;
     }
   }
-
-  // keyboard_event_up(key: string) {
-  // 	switch (key) {
-  // 		case `ArrowRight`:
-  // 			console.log("Right up");
-  // 			break
-  // 		case `ArrowLeft`:
-  // 			console.log("Left up")
-  // 			break
-  // 	}
-  // }
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     let origin = this.origin;

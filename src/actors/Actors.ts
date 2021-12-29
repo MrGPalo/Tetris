@@ -17,12 +17,12 @@ export class Piece extends Actor implements IActor {
     this.pieceSize = size;
     this.pieceColor = "red";
     this.origin = { x: initialPos.x, y: initialPos.y };
-    this.maxSpeed = 10 * 10;
+    this.maxSpeed = 512/12;
     this.speed = { x: 0, y: this.maxSpeed };
   }
   update(delta: number) {
     let newPosY = this.origin.y + this.speed.y * delta;
-    if (newPosY < 1024 - this.pieceSize.h && newPosY >= 0) {
+    if (newPosY < 912 - this.pieceSize.h && newPosY >= 0) {
       this.origin.y = newPosY;
     }
   }
@@ -30,22 +30,22 @@ export class Piece extends Actor implements IActor {
   keyboard_event(key: string) {
     switch (key) {
       case `ArrowRight`:
-        if (this.origin.y != 1024 - this.pieceSize.h) {
-          this.origin.x += this.pieceSize.h;
+        if (this.origin.y != 912 - this.pieceSize.h) {
+          this.origin.x += this.pieceSize.h/2;
         }
         break;
       case `ArrowLeft`:
-        if (this.origin.y != 1024 - this.pieceSize.h) {
-          this.origin.x -= this.pieceSize.w;
+        if (this.origin.y != 912 - this.pieceSize.h) {
+          this.origin.x -= this.pieceSize.w/2;
         }
         break;
       case `ArrowDown`:
-        if (this.origin.y != 1024 - this.pieceSize.h) {
+        if (this.origin.y != 912 - this.pieceSize.h) {
           this.origin.y += this.pieceSize.w;
         }
         break;
       case ` `:
-        this.origin.y = 1024 - this.pieceSize.h;
+        this.origin.y = 912 - this.pieceSize.h;
         this.speed.x = 0;
         this.speed.y = 0;
         break;

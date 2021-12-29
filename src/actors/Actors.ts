@@ -48,7 +48,11 @@ export class Piece extends Actor implements IActor {
         }
         break;
       case `ArrowDown`:
-        if (this.origin.y != 912 - this.pieceSize.h) {
+        if (this.origin.y ==912-this.pieceSize.h) {
+          this.speed.x = 0;
+          this.speed.y = 0;
+        }
+        if (this.origin.y < 912 - this.pieceSize.h) {
           this.origin.y += this.pieceSize.w;
         }
         break;

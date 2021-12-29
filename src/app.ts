@@ -4,7 +4,7 @@ import { FPSViewer } from "./actors/FPSViewer"
 import { Timer } from "./actors/Timer"
 import { Score } from "./actors/Score"
 import { Instructions } from "./actors/Instructions"
-import {GameSpace } from "./actors/GameSpace"
+import { GameSpace } from "./actors/GameSpace"
 
 window.onload = () => {
 	const canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -17,8 +17,8 @@ window.onload = () => {
 	let score = new Score
 	let piece = new Piece({ x: 512 - 512 / 12 / 2, y: 100 });
 
-	let actors: Array<IActor> =[instructions,gameSpace, fps,timer,score, piece]
-		
+	let actors: Array<IActor> = [instructions, gameSpace, fps, timer, score, piece]
+
 	let lastFrame = 0;
 	const render = (time: number) => {
 		let delta = (time - lastFrame) / 1000;

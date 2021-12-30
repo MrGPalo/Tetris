@@ -14,7 +14,6 @@ export class Piece extends Actor implements IActor {
   origin: Point;
   speed: Point;
   maxSpeed: number;
-  //cada pieza tiene que medir 1/24 del ancho/alto del canvas
   constructor(
     initialPos: Point,
     initialSpeed = 10,

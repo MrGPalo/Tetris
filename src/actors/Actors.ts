@@ -29,7 +29,7 @@ export class Piece extends Actor implements IActor {
   }
   update(delta: number) {
     let newPosY = this.origin.y + this.speed.y * delta;
-    if (newPosY < 912 - this.pieceSize.h && newPosY >= 0) {
+    if (newPosY < canvasHeight - this.pieceSize.h && newPosY >= 0) {
       this.origin.y = newPosY;
     }
   }
@@ -38,27 +38,35 @@ export class Piece extends Actor implements IActor {
     switch (key) {
       case `ArrowRight`:
         if (
-          this.origin.y != 912 - this.pieceSize.h &&
-          this.origin.x >= 256 &&
-          this.origin.x < 768 - this.pieceSize.w
+          this.origin.y != canvasHeight - this.pieceSize.h &&
+          this.origin.x >= playWidth / 2 &&
+          this.origin.x < (playWidth * 3) / 2 - this.pieceSize.w
         ) {
           this.origin.x += this.pieceSize.h / 2;
         }
         break;
       case `ArrowLeft`:
         if (
-          this.origin.y != 912 - this.pieceSize.h &&
-          this.origin.x > 256 + this.pieceSize.w / 2 &&
-          this.origin.x < 768 - this.pieceSize.w / 2
+          this.origin.y != canvasHeight - this.pieceSize.h &&
+          this.origin.x > playWidth / 2 + this.pieceSize.w / 2 &&
+          this.origin.x < (playWidth * 3) / 2 - this.pieceSize.w / 2
         ) {
           this.origin.x -= this.pieceSize.w / 2;
         }
         break;
       case `ArrowDown`:
-        this.speed.y++
+        if (this.origin.y == canvasHeight - this.pieceSize.h) {
+          this.speed.y = 0
+          this.speed.x = 0
+        } else {
+          this.speed.y += this.pieceSize.h
+        }
+        // console.log("->")
+        // this.speed.y ++
+        // console.log(this.speed.y)
         break;
       case ` `:
-        this.origin.y = 912 - this.pieceSize.h;
+        this.origin.y = canvasHeight - this.pieceSize.h;
         this.speed.x = 0;
         this.speed.y = 0;
         break;

@@ -6,6 +6,6 @@ export class GameSpace extends Actor {
 	keyboard_event() { }
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
 		ctx.strokeStyle = "Red"
-		ctx.strokeRect(canvasWidth/4, 112, playWidth, playHeight)
+		ctx.strokeRect(canvasWidth/4, 0, playWidth, playHeight)
 	}
 }

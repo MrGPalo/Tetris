@@ -5,7 +5,8 @@ import { Timer } from "./actors/Timer"
 import { Score } from "./actors/Score"
 import { Instructions } from "./actors/Instructions"
 import { GameSpace } from "./actors/GameSpace"
-import {pieceUnit} from "./utils/CanvasMeasureVars"
+import { pieceUnit } from "./utils/CanvasMeasureVars"
+import {PieceViewer} from "./actors/NextPiece"
 
 window.onload = () => {
 	const canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -13,12 +14,13 @@ window.onload = () => {
 
 	let instructions = new Instructions
 	let gameSpace = new GameSpace
+	let pieceViewer = new PieceViewer
 	let fps = new FPSViewer
 	let timer = new Timer
 	let score = new Score
-	let piece = new Piece({ x: canvas.width/2 - pieceUnit/2, y: 108 });
+	let piece = new Piece({ x: canvas.width/2 - pieceUnit/2, y: 0 });
 
-	let actors: Array<IActor> = [instructions, gameSpace, fps, timer, score, piece]
+	let actors: Array<IActor> = [instructions, gameSpace,pieceViewer, fps, timer, score, piece]
 
 	let lastFrame = 0;
 	const render = (time: number) => {

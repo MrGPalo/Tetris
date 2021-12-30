@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -name: Check out
-      uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       -name: Install dependencies
-      run: yarn install
+        run: yarn install
       
       -name: Deploy to Github Pages
-      uses: faablecloud/action-deploy-gh-pages@main
-      with:
-        dir: docs
-        branch: gh-pages
-        token: ${{secrets.GITHUB_TOKEN}}
+        uses: faablecloud/action-deploy-gh-pages@main
+        with:
+          dir: docs
+          branch: gh-pages
+          token: ${{secrets.GITHUB_TOKEN}}

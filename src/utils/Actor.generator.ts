@@ -28,18 +28,60 @@ export class PiecesActors extends Actor {
   //pieceColor: string;
   constructor(initialPos: Point) {
     super();
-    this.pieceSize = 10;
+    this.pieceSize = pieceUnit;
     this.origin = { x: initialPos.x, y: initialPos.y };
-    this.speed = { x: 0, y: 10 };
-    this.currentPiece = pieza.LL;
+    this.speed = { x: 0, y: pieceUnit / 2 };
+    this.currentPiece = pieza.I;
+    console.log(pieza);
     //	this.pieceColor = "red" deberia tener un array de colores para asignarlos a cada pieza
   }
   update(delta: number) {
-    let newPosY = this.origin.y + this.speed.y * delta;
+    let newPosY = (this.origin.y += this.speed.y * delta);
     if (newPosY < canvasHeight - this.pieceSize && newPosY >= 0) {
       this.origin.y = newPosY;
     }
   }
+  rotate() {}
+
+  keyboard_event(key: string) {
+    switch (key) {
+      case `ArrowRight`:
+        if (
+          this.origin.y != canvasHeight - this.pieceSize &&
+          this.origin.x >= playWidth / 2 &&
+          this.origin.x < (playWidth * 3) / 2 - this.pieceSize
+        ) {
+          this.origin.x += this.pieceSize / 2;
+        }
+        break;
+      case `ArrowLeft`:
+        if (
+          this.origin.y != canvasHeight - this.pieceSize &&
+          this.origin.x > playWidth / 2 + this.pieceSize / 2 &&
+          this.origin.x < (playWidth * 3) / 2 - this.pieceSize / 2
+        ) {
+          this.origin.x -= this.pieceSize / 2;
+        }
+        break;
+      case `ArrowDown`:
+        if (this.origin.y == canvasHeight - this.pieceSize) {
+          this.speed.y = 0;
+          this.speed.x = 0;
+        } else {
+          this.speed.y += this.pieceSize;
+        }
+        // console.log("->")
+        // this.speed.y ++
+        // console.log(this.speed.y)
+        break;
+      case ` `:
+        this.origin.y = canvasHeight - this.pieceSize;
+        this.speed.x = 0;
+        this.speed.y = 0;
+        break;
+    }
+  }
+
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     ctx.save();
     ctx.translate(this.origin.x, this.origin.y);

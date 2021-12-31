@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/yarn,node,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=yarn,node,macos
 Untitled-1.html
+docs
 ### macOS ###
 # General
 .DS_Store

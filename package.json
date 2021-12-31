@@ -1,7 +1,6 @@
 {
   "name": "Tetris",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/MrGPalo/Tetris.git",
   "author": "Gibson <gibson.palo@gmail.com>",
   "license": "MIT",

@@ -28,11 +28,10 @@ export class PiecesActors extends Actor {
   //pieceColor: string;
   constructor(initialPos: Point) {
     super();
-    this.pieceSize = pieceUnit;
+    this.pieceSize = pieceUnit/2;
     this.origin = { x: initialPos.x, y: initialPos.y };
     this.speed = { x: 0, y: pieceUnit / 2 };
     this.currentPiece = randomPieceSelect();
-    console.log(typeof(this.currentPiece))
     //console.log(pieza);
     //	this.pieceColor = "red" deberia tener un array de colores para asignarlos a cada pieza
   }
@@ -81,7 +80,8 @@ export class PiecesActors extends Actor {
         // console.log(this.speed.y)
         break;
       case ` `:
-        this.origin.y = canvasHeight - this.pieceSize;
+        this.origin.y = 800 - this.pieceSize*2;
+        console.log(this.origin.y)
         this.speed.x = 0;
         this.speed.y = 0;
         break;

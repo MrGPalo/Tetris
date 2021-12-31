@@ -5,8 +5,8 @@ export class Score extends Actor {
   keyboard_event() {}
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     const score = "00";
-    ctx.font = "30px Arial";
+    ctx.font = "20px Arial";
     ctx.fillStyle = "red";
-    ctx.fillText(`Score: ${score}`, 5, 130);
+    ctx.fillText(`Score: ${score}`, 5, 80);
   }
 }

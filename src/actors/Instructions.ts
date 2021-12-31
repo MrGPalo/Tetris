@@ -4,13 +4,13 @@ export class Instructions extends Actor {
   update() {}
   keyboard_event() {}
   draw(delta: number, ctx: CanvasRenderingContext2D) {
-    ctx.font = "20px Arial";
+    ctx.font = "15px Arial";
     ctx.fillStyle = "red";
-	  ctx.fillText(`Instructions`, 780, 30);
-	  ctx.fillText(`ArrowUp: Rotate`, 780, 70);
-	  ctx.fillText(`ArrowLeft: Move to left`, 780, 110);
-	  ctx.fillText(`ArrowRight: Move to right`, 780, 150);
-	  ctx.fillText(`ArrowDown: Soft drop`, 780, 190);
-    ctx.fillText(`Spacebar: Hard drop`, 780, 230);
+	  ctx.fillText(`Instructions`, 625, 30);
+	  ctx.fillText(`ArrowUp: Rotate`, 625, 60);
+	  ctx.fillText(`ArrowLeft: Move left`, 625, 90);
+	  ctx.fillText(`ArrowRight: Move right`, 625, 120);
+	  ctx.fillText(`ArrowDown: Soft drop`, 625, 150);
+    ctx.fillText(`Spacebar: Hard drop`, 625, 180);
   }
 }

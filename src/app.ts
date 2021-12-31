@@ -20,10 +20,11 @@ window.onload = () => {
 	let timer = new Timer
 	let score = new Score
 	//let piece = new Piece({ x: canvas.width/2 - pieceUnit/2, y: 0 });
-	let pieces = new PiecesActors({ x: canvasWidth / 2 - pieceUnit*2.5, y: 0 });
+	let pieces = new PiecesActors({ x: canvasWidth / 2 - pieceUnit*1.5, y: 0 });
+
 
 	let actors: Array<IActor> = [instructions, gameSpace,pieceViewer,pieces, fps, timer, score]
-
+	console.log(canvas.width/2)
 	let lastFrame = 0;
 	const render = (time: number) => {
 		let delta = (time - lastFrame) / 1000;

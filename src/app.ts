@@ -5,7 +5,7 @@ import { Timer } from "./actors/Timer"
 import { Score } from "./actors/Score"
 import { Instructions } from "./actors/Instructions"
 import { GameSpace } from "./actors/GameSpace"
-import { pieceUnit } from "./utils/CanvasMeasureVars"
+import { canvasWidth, pieceUnit } from "./utils/CanvasMeasureVars"
 import { PieceViewer } from "./actors/NextPiece"
 import {PiecesActors} from "./utils/Actor.generator"
 
@@ -20,7 +20,7 @@ window.onload = () => {
 	let timer = new Timer
 	let score = new Score
 	//let piece = new Piece({ x: canvas.width/2 - pieceUnit/2, y: 0 });
-	let pieces = new PiecesActors({ x: canvas.width / 2 - pieceUnit / 2, y: 0 });
+	let pieces = new PiecesActors({ x: canvasWidth / 2 - pieceUnit*2.5, y: 0 });
 
 	let actors: Array<IActor> = [instructions, gameSpace,pieceViewer,pieces, fps, timer, score]
 

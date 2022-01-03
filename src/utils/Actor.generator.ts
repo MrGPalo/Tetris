@@ -28,11 +28,12 @@ export class PiecesActors extends Actor {
   //pieceColor: string;
   constructor(initialPos: Point) {
     super();
-    this.pieceSize = pieceUnit/2;
+    this.pieceSize =pieceUnit;
     this.origin = { x: initialPos.x, y: initialPos.y };
     this.speed = { x: 0, y: pieceUnit / 2 };
     this.currentPiece = randomPieceSelect();
-    //console.log(pieza);
+    console.log(typeof(this.currentPiece))
+    //console.log(this.pieceSize, randomPieceSelect().length);
     //	this.pieceColor = "red" deberia tener un array de colores para asignarlos a cada pieza
   }
   update(delta: number) {
@@ -41,14 +42,16 @@ export class PiecesActors extends Actor {
       this.origin.y = newPosY;
     }
   }
-  rotate() {}
+  rotate() {
+    
+  }
 
   keyboard_event(key: string) {
     switch (key) {
       case `ArrowRight`:
         if (
           this.origin.y != canvasHeight - this.pieceSize &&
-          this.origin.x > canvasWidth/4 - this.pieceSize*2 &&
+          this.origin.x > canvasWidth/4 - this.pieceSize &&
           this.origin.x < canvasWidth *3/4 - this.pieceSize*3
         ) {
           this.origin.x += this.pieceSize / 2;
@@ -65,7 +68,14 @@ export class PiecesActors extends Actor {
         break;
       case `ArrowUp`:
         if (this.origin.y != 800 -this.pieceSize*5) {
-          console.log(this.pieceSize)
+          console.log(this.currentPiece)
+          if (this.currentPiece != pieza.Q) {
+          this.currentPiece = this.currentPiece.map((e: any, index: any) =>
+            this.currentPiece.map((row: any) => row[index]).reverse()
+          );
+            
+          }
+          console.log(this.currentPiece)
         }
         break
       case `ArrowDown`:

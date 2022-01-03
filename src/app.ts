@@ -19,8 +19,8 @@ window.onload = () => {
 	let fps = new FPSViewer
 	let timer = new Timer
 	let score = new Score
-	//let piece = new Piece({ x: canvas.width/2 - pieceUnit/2, y: 0 });
-	let pieces = new PiecesActors({ x: canvasWidth / 2 - pieceUnit*1.5, y: 0 });
+	// let piece = new Piece({ x: canvas.width/2 - pieceUnit/2, y: 0 });
+	let pieces = new PiecesActors({ x: canvasWidth / 2 - pieceUnit * 1.5, y: 0 });
 
 
 	let actors: Array<IActor> = [instructions, gameSpace,pieceViewer,pieces, fps, timer, score]

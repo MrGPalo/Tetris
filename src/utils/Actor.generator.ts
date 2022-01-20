@@ -25,12 +25,14 @@ export class PiecesActors extends Actor {
   origin: Point;
   speed: Point;
   currentPiece: any;
+  base: number;
   //pieceColor: string;
   constructor(initialPos: Point) {
     super();
     this.pieceSize =pieceUnit;
     this.origin = { x: initialPos.x, y: initialPos.y };
     this.speed = { x: 0, y: pieceUnit / 2 };
+    this.base = canvasHeight
     this.currentPiece = randomPieceSelect();
     console.log(typeof(this.currentPiece))
     //console.log(this.pieceSize, randomPieceSelect().length);
@@ -67,30 +69,25 @@ export class PiecesActors extends Actor {
         }
         break;
       case `ArrowUp`:
-        if (this.origin.y != 800 -this.pieceSize*5) {
-          console.log(this.currentPiece)
+        if (this.origin.y != this.base -this.pieceSize*5) {
           if (this.currentPiece != pieza.Q) {
           this.currentPiece = this.currentPiece.map((e: any, index: any) =>
             this.currentPiece.map((row: any) => row[index]).reverse()
           );
             
           }
-          console.log(this.currentPiece)
         }
         break
       case `ArrowDown`:
-        if (this.origin.y == canvasHeight - this.pieceSize) {
+        if (this.origin.y == this.base - this.pieceSize*4) {
           this.speed.y = 0;
           this.speed.x = 0;
         } else {
           this.speed.y += this.pieceSize;
         }
-        // console.log("->")
-        // this.speed.y ++
-        // console.log(this.speed.y)
         break;
       case ` `:
-        this.origin.y = 800 - this.pieceSize*2;
+        this.origin.y = this.base - this.pieceSize*4;
         console.log(this.origin.y)
         this.speed.x = 0;
         this.speed.y = 0;

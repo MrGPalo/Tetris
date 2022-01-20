@@ -1,4 +1,4 @@
-import {Actor} from "../types/Actor"
+import { Actor } from "../types/Actor";
 
 let emptyContainer = [
   "10000011000001",
@@ -34,7 +34,16 @@ let emptyContainer = [
 // }
 // })
 
+let teste = [
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 1, 0],
+  [0, 1, 1, 1],
+];
+
+//console.log(teste[0].map((val, index) => teste.map((row) => row[index]).reverse()))
+
 
 export class Container extends Actor {
-
+  draw(delta: number, ctx: CanvasRenderingContext2D) {}
 }

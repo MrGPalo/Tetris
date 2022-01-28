@@ -8,7 +8,9 @@
     "dev": "parcel index.html",
     "build": "yarn run clean && yarn run ghbuild",
     "ghbuild": "parcel build --dist-dir docs --public-url /Tetris index.html",
-    "clean": "rimraf docs dist"
+    "clean": "rimraf docs dist",
+    "start": "parcel serve -p $PORT index.html",
+    "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
     "lodash": "^4.17.21",
